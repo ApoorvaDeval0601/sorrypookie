@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I Overthought Things ❤️</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        
+        .heart {
+            color: #ff6b6b;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .message-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-hearts span {
+            position: absolute;
+            display: block;
+            width: 20px;
+            height: 20px;
+            background: #ff6b6b;
+            opacity: 0.8;
+            animation: animate-heart 10s linear infinite;
+            bottom: -150px;
+        }
+        
+        @keyframes animate-heart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+                border-radius: 0;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+                border-radius: 50%;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <!-- Floating hearts background -->
+    <div class="floating-hearts">
+        <span style="left: 20%; animation-delay: 0s;"></span>
+        <span style="left: 40%; animation-delay: 2s;"></span>
+        <span style="left: 60%; animation-delay: 4s;"></span>
+        <span style="left: 80%; animation-delay: 6s;"></span>
+        <span style="left: 30%; animation-delay: 8s;"></span>
+    </div>
+
+    <div class="max-w-2xl w-full">
+        <!-- Main content -->
+        <div class="message-card p-8 md:p-12 text-center fade-in">
+            <!-- Header with cute image -->
+            <div class="mb-8">
+                <img src="https://i.pinimg.com/564x/66/08/53/6608533e834ad3dd69300aa5508bfdb2.jpg" alt="Cute cartoon character looking thoughtful with question marks and lightbulbs floating around head" class="mx-auto rounded-2xl shadow-lg mb-4">
+                <h1 class="text-4xl md:text-5xl font-bold text-white mb-2">
+                    I Overthought Things <i class="fas fa-brain heart"></i>
+                </h1>
+                <p class="text-white/90 text-lg">And I want to make it right</p>
+            </div>
+
+            <!-- Apology message -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 mb-6">
+                <p class="text-white text-lg md:text-xl leading-relaxed mb-4">
+                    Hey, I know I got in my head too much and overcomplicated things. 
+                    My brain sometimes runs wild with thoughts that don't make sense.
+                </p>
+                <p class="text-white text-lg md:text-xl leading-relaxed">
+                    I really enjoy talking with you and I'm sorry if my overthinking made things weird.
+                </p>
+            </div>
+
+            <!-- Simple moving forward -->
+            <div class="bg-white/5 p-4 rounded-2xl mb-6">
+                <h2 class="text-xl font-semibold text-white mb-3">
+                    <i class="fas fa-forward heart"></i> Hope we can move forward
+                </h2>
+                <p class="text-white/90">
+                    I'll work on keeping my thoughts in check and just enjoying our conversations
+                </p>
+            </div>
+
+            <!-- Final simple message -->
+            <div class="text-center">
+                <p class="text-white text-xl mb-4">
+                    Your company means a lot to me
+                </p>
+                <div class="text-3xl space-x-4">
+                    <i class="fas fa-comment text-blue-300 heart" style="animation-delay: 0s"></i>
+                    <i class="fas fa-smile text-yellow-300 heart" style="animation-delay: 0.5s"></i>
+                    <i class="fas fa-coffee text-brown-300 heart" style="animation-delay: 1s"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Simple footer -->
+        <div class="text-center mt-8">
+            <img src="https://m.media-amazon.com/images/I/613255M4VtL._UF894,1000_QL80_.jpg" alt="Lighthearted cartoon of two people chatting over coffee with positive conversation bubbles" class="mx-auto rounded-lg opacity-80">
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts background
+        function createHearts() {
+            const container = document.querySelector('.floating-hearts');
+            for (let i = 0; i < 15; i++) {
+                const heart = document.createElement('span');
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 10 + 's';
+                heart.style.width = Math.random() * 20 + 10 + 'px';
+                heart.style.height = heart.style.width;
+                container.appendChild(heart);
+            }
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            createHearts();
+        });
+    </script>
+</body>
+</html>
+
